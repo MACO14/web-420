@@ -1,6 +1,6 @@
 # Composers OpenAPI
 
-openapi: 3.0.0
+openapi: "3.0.0"
 
 info:
   title: WEB 420 RESTful APIs - OpenAPI 3.0
@@ -10,10 +10,10 @@ servers:
   - url: http://localhost:3000/api-docs/
 paths:
   /composers:
-    summary: returns a list of composer documents.
     get:
       tags:
         - Composers
+      description: API for returning a list of composer documents
       summary: returns a list of composer documents
       responses:
         "200":
@@ -25,16 +25,17 @@ paths:
     post:
       tags:
         - Composers
+      description: API for adding a new composer document
       summary: Creates a new composer object
       requestBody:
+        description: Composer information
         content:
           application/json:
             schema:
-              type: object
+              required:
+                - type
               properties:
-                firstName:
-                  type: string
-                lastName:
+                type:
                   type: string
       responses:
         "200":
@@ -44,15 +45,16 @@ paths:
         "501":
           description: MongoDB Exception
   /composers/{id}:
-    summary: returns a composer document
     get:
       tags:
         - Composers
+      description: API for returning a composer document
+      summary: returns a composer document
       parameters:
         - name: id
           in: path
-          description: The composerId requested by the user
           required: true
+          description: Composer document Id
           schema:
             type: string
       responses:
