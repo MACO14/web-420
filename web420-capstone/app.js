@@ -5,6 +5,8 @@ Date: 05 March 2024
 Description: Main server file for capstone project
 */
 
+import {teamAPI} from './routes/team-routes';
+
 const express = require('express');
 const http = require('http');
 const swaggerUi = require('swagger-ui-express');
